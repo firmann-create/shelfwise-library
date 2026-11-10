@@ -1,10 +1,10 @@
 <?php
 // Konfigurasi database dan konstanta dasar
 const DB_HOST = 'localhost';
-const DB_NAME = 'db_perpustakaan';
-const DB_USER = 'isi_user';
-const DB_PASS = 'isi_password';
-const BASE_URL = '';
+const DB_NAME = 'shelfwise-library'; 
+const DB_USER = 'root';              
+const DB_PASS = '';                  
+const BASE_URL = 'http://localhost/shelfwise-library';
 
 // Koneksi PDO
 try {
@@ -18,5 +18,5 @@ try {
         ]
     );
 } catch (PDOException $e) {
-    exit('Koneksi database gagal.');
+    exit('Koneksi database gagal: ' . $e->getMessage());
 }
