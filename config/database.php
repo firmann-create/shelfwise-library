@@ -1,12 +1,10 @@
 <?php
-// Konfigurasi database dan konstanta dasar
 const DB_HOST = 'localhost';
-const DB_NAME = 'shelfwise-library'; 
-const DB_USER = 'root';              
-const DB_PASS = '';                  
+const DB_NAME = 'shelfwise-library';
+const DB_USER = 'root';
+const DB_PASS = '';
 const BASE_URL = 'http://localhost/shelfwise-library';
 
-// Koneksi PDO
 try {
     $pdo = new PDO(
         'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4',
