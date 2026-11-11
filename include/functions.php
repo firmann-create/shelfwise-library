@@ -40,6 +40,7 @@ function statusBuku(int $stok): array
     return ['Dipinjam', 'warn'];
 }
 
+// Maksimal ukuran file 2 MB (2 * 1024 * 1024 byte)
 const SAMPUL_MAKS = 2 * 1024 * 1024;
 const SAMPUL_TIPE = ['image/jpeg' => 'jpg', 'image/png' => 'png'];
 
