@@ -1,11 +1,6 @@
 <?php
-require_once __DIR__ . '/config/database.php';
-require_once __DIR__ . '/includes/functions.php';
-$judul = 'Masuk';
-$flash = getFlash();
-$ingatUser = $_COOKIE['ingat_username'] ?? '';
-require_once __DIR__ . '/includes/header.php';
-?>
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../includes/functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username'] ?? '');
@@ -35,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['role']      = $user['role'] ?? 'user';
         $_SESSION['nama']      = $user['nama'] ?? $user['username'];
 
-        // Fitur 'Ingat saya' menggunakan cookie (selama 30 hari)
+        // Fitur 'Ingat saya' menggunakan cookie
         if ($ingat) {
             setcookie('ingat_username', $username, time() + (86400 * 30), "/");
         } else {
