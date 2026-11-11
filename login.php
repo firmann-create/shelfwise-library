@@ -1,6 +1,11 @@
 <?php
-require_once __DIR__ . '/../config/database.php';
-require_once __DIR__ . '/../includes/functions.php';
+require_once __DIR__ . '/config/database.php';
+require_once __DIR__ . '/includes/functions.php';
+$judul = 'Masuk';
+$flash = getFlash();
+$ingatUser = $_COOKIE['ingat_username'] ?? '';
+require_once __DIR__ . '/includes/header.php';
+?>
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username'] ?? '');
