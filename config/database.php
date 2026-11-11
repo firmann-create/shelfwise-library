@@ -1,20 +1,24 @@
 <?php
-const DB_HOST = 'localhost';
-const DB_NAME = 'shelfwise-library';
-const DB_USER = 'root';
-const DB_PASS = '';
-const BASE_URL = 'http://localhost/shelfwise-library';
+// Definisi URL dasar proyek agar tidak error saat redirect
+if (!defined('BASE_URL')) {
+    define('BASE_URL', '/shelfwise-library');
+}
+
+$host = 'localhost';
+$db   = 'shelfwise-library';
+$user = 'root';
+$pass = '';
+$charset = 'utf8mb4';
+
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   => false,
+];
 
 try {
-    $pdo = new PDO(
-        'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4',
-        DB_USER,
-        DB_PASS,
-        [
-            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        ]
-    );
-} catch (PDOException $e) {
-    exit('Koneksi database gagal: ' . $e->getMessage());
+    $pdo = new PDO($dsn, $user, $pass, $options);
+} catch (\PDOException $e) {
+    throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
